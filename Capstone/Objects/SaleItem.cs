@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capstone
+namespace Capstone.Objects
 {
     internal abstract class SaleItem
     {
@@ -21,7 +21,7 @@ namespace Capstone
         }
         public override string ToString()
         {
-            return $"{_pencePrice / 100:F2}";
+            return $"{_pencePrice / 100.0:F2}";
         }
     }
 }

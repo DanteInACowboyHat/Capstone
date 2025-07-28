@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capstone
+namespace Capstone.Objects
 {
     internal class Concession : SaleItem
     {
@@ -22,7 +22,7 @@ namespace Capstone
                     throw new ArgumentException("Name can only be letters, numbers and spaces");
                 }
             }
-                _name = name;
+            _name = name;
         }
         public override string ToString()
         {

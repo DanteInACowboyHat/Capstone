@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capstone
+namespace Capstone.Objects
 {
     internal class Sale
     {
@@ -29,7 +29,7 @@ namespace Capstone
                 sb.Append(saleItem.ToString());
                 saleTotal += saleItem.PencePrice;
             }
-            sb.AppendLine($"Total: £{saleTotal/100.0:F2}");
+            sb.AppendLine($"Total: £{saleTotal / 100.0:F2}");
             return sb.ToString();
         }
     }
