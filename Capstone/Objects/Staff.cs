@@ -9,6 +9,7 @@ namespace Capstone.Objects
 {
     internal class Staff
     {
+        //private attributes so cant be edited or seen without methods for security
         private int _id;
         private string _fName;
         private string _sName;
@@ -21,30 +22,30 @@ namespace Capstone.Objects
             _sName = sName;
             _level = level;
 
-            string allowedChars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm ";
+            string allowedChars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm ";//list of allowed characters for the attribute
             foreach (char c in fName)
             {
-                if (!allowedChars.Contains(c))
+                if (!allowedChars.Contains(c))//checking each character against the list to make sure it is valid
                 {
-                    throw new ArgumentException("First name can only be letters, numbers and spaces");
+                    throw new ArgumentException("First name can only be letters, numbers and spaces");//if not an error happens
                 }
             }
             _fName = fName;
             foreach (char c in sName)
             {
-                if (!allowedChars.Contains(c))
+                if (!allowedChars.Contains(c))//checking each character against the list to make sure it is valid
                 {
-                    throw new ArgumentException("Surname can only be letters, numbers and spaces");
+                    throw new ArgumentException("Surname can only be letters, numbers and spaces");//if not an error happens
                 }
             }
             _sName = sName;
-            if (level == "General" || level == "Manager")
+            if (level == "General" || level == "Manager")//checking if level is a valid string
             {
                 _level = level;
             }
             else
             {
-                throw new ArgumentException("Level must be either General or Manager");
+                throw new ArgumentException("Level must be either General or Manager");//if not an error happens
             }
             _id = id;
         }
@@ -52,9 +53,13 @@ namespace Capstone.Objects
         {
             return _id;
         }
+        /// <summary>
+        /// returns a string containing name, id and position of employee
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return $"{_id} - {_fName} - {_sName} - {_level}";
+            return $"ID number:{_id} - Name: {_fName} - {_sName} - position: {_level}";
         }
     }
 }
