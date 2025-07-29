@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Capstone.Objects
 {
@@ -21,6 +22,10 @@ namespace Capstone.Objects
             {
                 throw new ArgumentException("ticket has to be standard or premium");
             }
-        }    
+        }
+        public override string ToString()
+        {
+            return $"{_type} - {base.ToString()}";
+        }
     }
 }
