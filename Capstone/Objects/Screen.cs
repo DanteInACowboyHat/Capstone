@@ -31,6 +31,10 @@ namespace Capstone.Objects
             _sSeat = sSeat;
             _pSeat = pSeat;
         }
+        public override string ToString()
+        {
+            return $"{_name} - {_sSeat} - {_pSeat}";
+        }
     }
 }
 
