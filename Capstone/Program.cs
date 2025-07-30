@@ -202,7 +202,7 @@ void addConcession(Sale sales)
 ///
 ///A method to launch a loop once an employee uses the program
 ///
-void menu(List<Screening> screening)
+void saleMenu(List<Screening> screening)
 {
     Sale sales = new Sale();//initiates a new instance of the sale object
     Boolean done = false;//makes a false boolean
@@ -229,6 +229,7 @@ void menu(List<Screening> screening)
             done = true;//if user input and word are the same the boolean changes to true and ends the loop
         }
     }
+    Console.WriteLine(sales.ToString());//outputs the sales list to the user
 }
 ///
 ///Method to choose which screening of which film tickets are to be bought for
@@ -274,12 +275,13 @@ void choosingTicket(Sale sales, List<Screening> screening)
 
 if (staff[staffPick].getlevel() == "Manager")//verifies if staff level is a manager or not
 {
-    menu(screening);//calls menu for adding tickets and concessions to customer order
-    //If so leads into a menu that should be able to change screening details
+    Console.WriteLine("Welcome Manager "+ staff[staffPick].fName + " "+ staff[staffPick].sName);
+    saleMenu(screening);//calls menu for adding tickets and concessions to customer order
 }
 else
 {
-    menu(screening);//calls menu for adding tickets and concessions to customer order
+    Console.WriteLine("Welcome staff member" + staff[staffPick].fName + " " + staff[staffPick].sName);
+    saleMenu(screening);//calls menu for adding tickets and concessions to customer order
 }
 //The code below covers point 11 of selling tickets and concessions
 string[] updatedSchedule = new string[screening.Count];//creates a new empty array of strings the length of the current open screening schedule

@@ -14,7 +14,8 @@ namespace Capstone.Objects
         private string _fName;
         private string _sName;
         private string _level;
-
+        public string fName { get { return _fName; } }
+        public string sName { get { return _sName; } }
         public Staff(int id, string fName, string sName, string level)
         {
             _id = id;
