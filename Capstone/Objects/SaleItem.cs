@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Objects
 {
-    internal abstract class SaleItem
+    internal abstract class SaleItem // abstract as saleItem is a category
     {
         //attributes ,ade private so unaccessible without methods for security
         private int _pencePrice;

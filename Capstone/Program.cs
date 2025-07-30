@@ -2,6 +2,8 @@
 using System.Security.Cryptography.X509Certificates;
 using Capstone.Objects;
 
+
+//The section below covers point 1 in Selling tickets and concessions and point 1 of setting schedules workflows
 char[] splitChars = ['[', ']', ':', '%'];//characters used to split apart lines in files loaded in
 string path = $@"{Environment.CurrentDirectory}\Resources";//string to go to the location where the files are stored on the current device
 string[] resourcesFiles = Directory.GetFiles(path, "*.txt");//putting all text based files in the path gotten in the previous line into an array 
@@ -37,24 +39,6 @@ for (int j = 0, jmax = resourcesFiles.Length; j < jmax; j++)//for loop to go thr
         {
             films.Add(new Films(words[2], words[8].ToString(), int.Parse(words[4])));//if the first word is "Movie" it creates a new instance of Films in the films list
         }
-        //if (words[1] == "Screening")
-        //{
-        //    Boolean screenAndSeatPossible = false;//if the first word is "Screening", first a boolean for if the screening is possible is made
-        //    foreach (Screen screen in screens)//a loop to go through the different instances in screens
-        //    {
-        //        if (words[8] == screen.getName())//checks the 8th word(which should be the Screen name) is the same as a name for an instance of a screen
-        //        {
-        //            if (int.Parse(words[10]) <= screen.getSSeat() && int.Parse(words[12]) <= screen.getPSeat())//if it is then it will check that the amount of seats the screening says it has left is less than the standard and premium seats respectively
-        //            {
-        //                screenAndSeatPossible = true;//if correct it will change the boolean to true
-        //            }
-        //        }
-        //    }
-        //if (screenAndSeatPossible == true)//checks if the boolean is true
-        //{
-        //    screening.Add(new Screening(words[2], int.Parse(words[4]), int.Parse(words[6]), words[8], int.Parse(words[10]), int.Parse(words[12])));//if true it creates a new instance of a Screening in the screenings list
-        // }
-    //}
         if (words[1] == "Staff")
         {
             Boolean noChange = false;//if the first word is staff a boolean is created representing if a change has happened
@@ -75,6 +59,11 @@ for (int j = 0, jmax = resourcesFiles.Length; j < jmax; j++)//for loop to go thr
         }
     }
 }
+//The section above covers point 1 in Selling tickets and concessions and point 1 of setting schedules workflows
+
+
+
+//the below code covers point 2 of setting schedules
 Console.WriteLine("Which staff member is using the program");
 foreach (Staff employee in staff)//loops through for amount of staff in staff list
 {
@@ -99,7 +88,10 @@ while (ValidID == false)//while the ID isnt valid a loop will happen
         count1++;//increases count per loop
     }
 }
+//the above code covers point 2 of setting schedules
 
+
+//the code below covers point 2 of Selling Tickets and concessions workflow
 string screeningPath = $@"{Environment.CurrentDirectory}\Schedules";//string to go to the location where the screening files are stored on the current device
 string[] screeningFiles = Directory.GetFiles(screeningPath, "*.txt");//putting all text based files in the path gotten in the previous line into an array 
 Console.WriteLine("Choose the day of screening with the corresponding number");
@@ -110,8 +102,12 @@ for (int j = 0, jmax = screeningFiles.Length; j < jmax; j++)//for loop to go thr
             count++;
             Console.WriteLine(count + ". " + screeningFiles[j]);
         }
+
+//the code below covers point 7 of setting schedules workflow
 int scheduleChoice = int.Parse(Console.ReadLine()) - 1;
 string[] filelines = File.ReadAllLines(screeningFiles[scheduleChoice]);//creates an array of every line in the choosen screening day
+//the code above covers point 7 of setting schedules workflow
+
 foreach (string line in filelines)//a loop that will go through all the lines in the current file
 {
     string[] words = line.Split(splitChars);//splits the lines of the schedule using the split characters list
@@ -131,12 +127,15 @@ foreach (string line in filelines)//a loop that will go through all the lines in
         screening.Add(new Screening(words[2], int.Parse(words[4]), int.Parse(words[6]), words[8], int.Parse(words[10]), int.Parse(words[12])));//if true it creates a new instance of a Screening in the screenings list
     }
 }
+//the code above covers point 2 of Selling Tickets and concessions workflow
 
 ///
 ///A method to add tickets to the customers order requiring both the current sale lsit and current screening list
 ///
 void addTicket(Sale sales, Screening screening)
 {
+
+    //the code below covers point 4 of selling tickets and concessions workflow
     Console.WriteLine("Select a ticket type below");
     int count = 0;
     foreach (Ticket tick in tickets)//loop going through each ticket type
@@ -145,7 +144,9 @@ void addTicket(Sale sales, Screening screening)
         Console.WriteLine(count + " " + tick.ToString());//outputs each ticket type with a number before hand to show which option it is
     }
     int Tchoice = int.Parse(Console.ReadLine()) - 1;//reads user input and takes 1 away to get the selection of ticket type
+    //the code above covers point 4 of selling tickets and concessions workflow
 
+    //the code beneath covers point 5 of selling tickets and concessions workflow
     int aOfChoice = 0;//initilisases interger for how many tickets user wants
     while (aOfChoice <= 0)//loops whilst wanted ticket amount is below or equal to 0
     {
@@ -168,6 +169,7 @@ void addTicket(Sale sales, Screening screening)
         }
         screening.pSeats = screening.pSeats - aOfChoice; //if amount of seats is less than left over the amount of wanted seats is taken away from remaining seats
     }
+    //the code above covers point 5 of selling tickets and concessions workflow
     for (int i = 0; i < aOfChoice; i++)//loops the amount of times as tickets wanted
         {
             sales.AddSaleItem(tickets[Tchoice]);//each iteration adds a ticket to the sales list
@@ -186,6 +188,7 @@ void addConcession(Sale sales)
         count++;
         Console.WriteLine(count + " " + concession.ToString());// outputs each concession and price with a number behind showing which option the selection is
     }
+    //the code below covers point 8 of selling tickets and concessions workflow
     int conchoice = int.Parse(Console.ReadLine()) - 1;//converts user input to interger and removes 1 from the selection to get the correct identifier
     Console.WriteLine("How many would you like");
     int aOfChoice = int.Parse(Console.ReadLine());//converts user input to interger for the amount of said concession wanted
@@ -193,6 +196,7 @@ void addConcession(Sale sales)
     {
         sales.AddSaleItem(concessions[conchoice]);//each iteration adds a concession to the sales list
     }
+    //the code above covers point 8 of selling tickets and concessions workflow
     Console.WriteLine(sales.ToString());//outputs the sales list to the user
 }
 ///
@@ -210,10 +214,14 @@ void menu(List<Screening> screening)
         {
             choosingTicket(sales, screening);//calls ticket choosing method and passes through the sale instance and screening instance
         }
+        
+        //the code below covers point 7 of selling tickets and concessions
         if (choice == 2)//if input is 2 launchs concession option
         {
             addConcession(sales);//method to add a concession to the sale which is passed through to the method
         }
+        //the code above covers point 7 of selling tickets and concessions
+
         Console.WriteLine("Is customer Finished with their order, if so enter 'Yes'");
         string Fin = Console.ReadLine();//reads user input and stores in a varibale
         if (Fin == "Yes")//compares user input to word needed to end the loop
@@ -233,9 +241,14 @@ void choosingTicket(Sale sales, List<Screening> screening)
             count++;
             Console.WriteLine(count + ". " + screenings.ToString());//outputs it with a count crresponding to a screening
         }
+
+        //the code below covers point 3 of selling tickets and concessions workflow
         Console.WriteLine("Select a screening by inputting a number corresponding");
         int scrChoice = int.Parse(Console.ReadLine());//takes user input converts to interger and stores it
         string filmName = screening[scrChoice - 1].film;//gets the film which the user picked and puts the name in a variable
+        //the code above covers point 3 of selling tickets and concessions workflow    
+
+        //the code below covers point 6 of selling tickets and concessions workflow
         count = 0;
         foreach (Films movies in films)//loops for each film in the film list
         {
@@ -246,13 +259,18 @@ void choosingTicket(Sale sales, List<Screening> screening)
             count++;//count increases each iteration
         }
         Console.WriteLine("Are all customers above the age rating of " + films[count].getRating() + ". If so input Yes");
-        string AgeVerify = Console.ReadLine();//gets user input and stores
+        string AgeVerify = Console.ReadLine();//gets user input and stores it
         if (AgeVerify == "Yes")//compares if user input is 'Yes' if not nothing happens
-    { 
+        { 
             addTicket(sales, screening[count]);//calls the method to add tickets to the sale and passes the sales list and screening wanted
+            
+            //the code below covers point 10 of selling tickets and concessions workflow
             Console.WriteLine(screening[count].ToString());//displays the updated information of the choosen screening
+            //the code above covers point 10 of selling tickets and concessions workflow
+
         }
-    }
+        //the code above covers point 6 of selling tickets and concessions workflow
+}
 
 if (staff[staffPick].getlevel() == "Manager")//verifies if staff level is a manager or not
 {
@@ -263,6 +281,7 @@ else
 {
     menu(screening);//calls menu for adding tickets and concessions to customer order
 }
+//The code below covers point 11 of selling tickets and concessions
 string[] updatedSchedule = new string[screening.Count];//creates a new empty array of strings the length of the current open screening schedule
 count = 0;//reassigns the count variable to 0
 foreach (Screening screening1 in screening)//loops for each time there is a screening in screening
@@ -272,4 +291,4 @@ foreach (Screening screening1 in screening)//loops for each time there is a scre
     count++;//iterates every loop to make sure the array is filled
 }
 System.IO.File.WriteAllLines(screeningFiles[scheduleChoice], updatedSchedule);//overwrites the screening file with the new schedule after tickets have been sold
-    
+    //The code above covers point 11 of selling tickets and concessions
