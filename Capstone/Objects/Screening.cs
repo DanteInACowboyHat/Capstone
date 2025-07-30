@@ -16,6 +16,7 @@ namespace Capstone.Objects
         private string _Screen;
         private int _sSeats;
         private int _pSeats;
+        //get methods for all attributes in this class
         public string film
         {
             get { return _film; }
@@ -33,6 +34,7 @@ namespace Capstone.Objects
         {
             get { return _Screen; }
         }
+        //set methods for both seat options so can be edited after buying tickets
         public int sSeats
         {
             get { return _sSeats; }
