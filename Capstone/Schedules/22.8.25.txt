@@ -1,0 +1,7 @@
+﻿[Screening:Mufasa%TimeH:6%TimeM:40%Screen:A%sSeat:30%pSeat:10]
+[Screening:Iron Man%TimeH:7%TimeM:30%Screen:B%sSeat:0%pSeat:5]
+[Screening:Gladiator%TimeH:7%TimeM:40%Screen:C%sSeat:40%pSeat:0]
+[Screening:Gladiator%TimeH:9%TimeM:0%Screen:A%sSeat:20%pSeat:5]
+[Screening:Maze Runner%TimeH:12%TimeM:20%Screen:C%sSeat:30%pSeat:0]
+[Screening:Gladiator%TimeH:16%TimeM:40%Screen:B%sSeat:0%pSeat:3]
+[Screening:Holiday%TimeH:19%TimeM:20%Screen:A%sSeat:10%pSeat:10]

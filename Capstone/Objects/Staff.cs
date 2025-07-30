@@ -49,9 +49,17 @@ namespace Capstone.Objects
             }
             _id = id;
         }
+        /// <summary>
+        /// gets the ID of employee
+        /// </summary>
+        /// <returns></returns>
         public int getid()
         {
             return _id;
+        }
+        public string getlevel()
+        {
+            return _level;
         }
         /// <summary>
         /// returns a string containing name, id and position of employee

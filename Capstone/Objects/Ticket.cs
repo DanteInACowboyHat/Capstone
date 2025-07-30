@@ -11,8 +11,6 @@ namespace Capstone.Objects
     {
         //private attributes so cant be edited or seen without methods for security
         private string _type;
-        private int _pencePrice;
-
         public Ticket(string type, int pencePrice) : base(pencePrice)
         {
             if (type == "Standard" || type == "Premium")//making sure the tickete type is valid
@@ -30,7 +28,7 @@ namespace Capstone.Objects
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{_type} - £{base.ToString()}";
+            return $"{_type} - {base.ToString()}";
         }
     }
 }

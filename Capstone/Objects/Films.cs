@@ -39,6 +39,14 @@ namespace Capstone.Objects
             }
             _length = length;
         }
+        public string getName()
+        {
+            return _name;
+        }
+        public string getRating()
+        {
+            return _Rating;
+        }
         /// <summary>
         /// returns a string containing the name rating and length of the choosen film
         /// </summary>

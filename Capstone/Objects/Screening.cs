@@ -16,7 +16,33 @@ namespace Capstone.Objects
         private string _Screen;
         private int _sSeats;
         private int _pSeats;
-
+        public string film
+        {
+            get { return _film; }
+        }
+      
+        public int timeH
+        {
+            get { return _timeH; }
+        }
+        public int timeM
+        {
+            get { return _timeM; }
+        }
+        public string Screen
+        {
+            get { return _Screen; }
+        }
+        public int sSeats
+        {
+            get { return _sSeats; }
+            set { _sSeats = value; }
+        }
+        public int pSeats 
+        {
+            get { return _pSeats; }
+            set { _pSeats = value; }
+        }
         public Screening(string film, int timeH, int timeM, string screen, int sSeats, int pSeats)
         {
             string allowedChars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890 ";//list of viable characters for the film name
@@ -42,6 +68,7 @@ namespace Capstone.Objects
             _sSeats = sSeats;
             _pSeats = pSeats;
         }
+
         /// <summary>
         /// returns a string of the screening with which fil it is, at what time it is, what screen it is at and what seats are remainging
         /// </summary>
